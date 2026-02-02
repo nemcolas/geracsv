@@ -1,0 +1,3 @@
+3314V07|https://example.com/images/vestido-floral-1.jpg
+2201B15|https://example.com/images/blusa-casual-1.jpg
+4521C09|https://example.com/images/calca-jeans-1.jpg
