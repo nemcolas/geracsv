@@ -50,14 +50,13 @@ def baixar_imagem(url, sku, pasta_destino='imagens'):
         return f'error: {str(e)[:50]}'
 
 def main():
-    """Função principal"""
     print("="*70)
     print("    DOWNLOADER DE IMAGENS - GOOGLE SHOPPING")
     print("="*70)
     
     # Verifica argumentos
     if len(sys.argv) < 2:
-        print("\n❌ Erro: Você precisa fornecer o arquivo lista_imagens.txt")
+        print("\n Erro: Você precisa fornecer o arquivo lista_imagens.txt")
         print("\nUSO:")
         print("    python baixar_imagens.py lista_imagens.txt")
         sys.exit(1)
@@ -66,25 +65,25 @@ def main():
     
     # Verifica se o arquivo existe
     if not os.path.exists(arquivo_lista):
-        print(f"\n❌ Erro: Arquivo não encontrado: {arquivo_lista}")
+        print(f"\n Erro: Arquivo não encontrado: {arquivo_lista}")
         sys.exit(1)
     
-    print(f"\n📂 Lendo arquivo: {arquivo_lista}")
+    print(f"\n Lendo arquivo: {arquivo_lista}")
     
     # Lê a lista de imagens
     with open(arquivo_lista, 'r', encoding='utf-8') as f:
         linhas = [linha.strip() for linha in f if linha.strip()]
     
     total = len(linhas)
-    print(f"📊 Total de imagens a baixar: {total}")
-    print("\n🚀 Iniciando download...\n")
+    print(f" Total de imagens a baixar: {total}")
+    print("\n Iniciando download...\n")
     
     # Estatísticas
     sucesso = 0
     existentes = 0
     erros = 0
     
-    # Baixa cada imagem
+    # Baixa cada imagem individualmente
     for i, linha in enumerate(linhas, 1):
         partes = linha.split('|')
         if len(partes) != 2:

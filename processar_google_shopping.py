@@ -22,15 +22,14 @@ NAMESPACE = {'g': 'http://base.google.com/ns/1.0'}
 
 def remover_sufixo_tamanho(titulo):
     """Remove sufixos de tamanho do título (- P, - M, - G, - GG, etc)"""
-    # Padrões comuns de tamanho no final do título
     padrao = r'\s*-\s*(PP|P|M|G|GG|XG|EG|XGG|EGG|[0-9]+|ÚNICO|UN|U|UNICO)\s*$'
     titulo_limpo = re.sub(padrao, '', titulo, flags=re.IGNORECASE)
     return titulo_limpo.strip()
 
 def processar_xml(caminho_xml):
     """Processa o XML e agrupa itens por item_group_id"""
-    print(f"\n📂 Lendo arquivo: {caminho_xml}")
-    print("⏳ Processando XML...")
+    print(f"\n Lendo arquivo: {caminho_xml}")
+    print(" Processando XML...")
     
     # Parse do XML
     tree = ET.parse(caminho_xml)
@@ -96,7 +95,7 @@ def gerar_skus_pai(grupos):
         
         skus_pai.append(sku_pai)
     
-    print(f"✅ Total de SKUs pai gerados: {len(skus_pai)}")
+    print(f"Total de SKUs pai gerados: {len(skus_pai)}")
     return skus_pai
 
 def salvar_csv(skus_pai, arquivo_saida='sku_pai.csv'):
@@ -132,7 +131,7 @@ def main():
     
     # Verifica se foi passado o caminho do XML
     if len(sys.argv) < 2:
-        print("\n❌ Erro: Você precisa fornecer o caminho do arquivo XML")
+        print("\nErro: Você precisa fornecer o caminho do arquivo XML")
         print("\nUSO:")
         print("    python processar_google_shopping.py arquivo.xml")
         print("\nOu faça upload do XML e execute:")
@@ -143,7 +142,7 @@ def main():
     
     # Verifica se o arquivo existe
     if not os.path.exists(caminho_xml):
-        print(f"\n❌ Erro: Arquivo não encontrado: {caminho_xml}")
+        print(f"\nErro: Arquivo não encontrado: {caminho_xml}")
         sys.exit(1)
     
     try:
@@ -166,9 +165,9 @@ def main():
         print("\n" + "="*70)
         print("RESUMO")
         print("="*70)
-        print(f"✅ Total de SKUs pai: {len(skus_pai)}")
-        print(f"✅ CSV gerado: {csv_path}")
-        print(f"✅ Lista de imagens: {lista_imagens_path}")
+        print(f" Total de SKUs pai: {len(skus_pai)}")
+        print(f" CSV gerado: {csv_path}")
+        print(f" Lista de imagens: {lista_imagens_path}")
         print("="*70)
         
         # Mostra alguns exemplos
@@ -186,12 +185,11 @@ def main():
         print("="*70)
         print("1. Baixe o arquivo 'sku_pai.csv' com todas as informações")
         print("2. Para baixar as imagens, use o arquivo 'lista_imagens.txt'")
-        print("   Você pode usar ferramentas como wget, curl ou scripts de download")
         print("   Formato do arquivo: SKU|URL_DA_IMAGEM")
         print("="*70)
         
     except Exception as e:
-        print(f"\n❌ Erro: {e}")
+        print(f"\n Erro: {e}")
         import traceback
         traceback.print_exc()
         sys.exit(1)
